@@ -70,10 +70,13 @@ def main():
   labels = load_labels(args.labels)
 
   model_file, *device = args.model.split('@')
-  interpreter = Interpreter(args.model,experimental_delegates=[
+  try:
+    interpreter = Interpreter(args.model,experimental_delegates=[
                                         tflite.load_delegate(EDGETPU_SHARED_LIB,
                                         {'device': device[0]} if device else {})
                                         ])
+  except ValueError:
+    interpreter = Interpreter(args.model)
   interpreter.allocate_tensors()
   _, height, width, _ = interpreter.get_input_details()[0]['shape']
 
