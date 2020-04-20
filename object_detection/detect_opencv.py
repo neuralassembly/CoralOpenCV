@@ -117,6 +117,7 @@ def main():
     image = cv2.resize(frame, 
                        dsize=(input_width, input_height), 
                        interpolation=cv2.INTER_NEAREST)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     start_time = time.monotonic()
     results = detect_objects(interpreter, image, args.threshold)

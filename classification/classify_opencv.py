@@ -87,6 +87,8 @@ def main():
     image = cv2.resize(frame, 
                        dsize=(width, height), 
                        interpolation=cv2.INTER_NEAREST)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
     start_time = time.time()
     results = classify_image(interpreter, image)
     elapsed_ms = (time.time() - start_time) * 1000
