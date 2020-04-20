@@ -104,7 +104,7 @@ def main():
                                         tflite.load_delegate(EDGETPU_SHARED_LIB,
                                         {'device': device[0]} if device else {})
                                         ])
-  except ValueError:
+  except (ValueError, OSError):
     interpreter = Interpreter(model_file)
   interpreter.allocate_tensors()
   _, input_height, input_width, _ = interpreter.get_input_details()[0]['shape']
