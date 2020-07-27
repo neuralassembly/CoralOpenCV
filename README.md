@@ -16,7 +16,7 @@ cd object_detection
 
 bash install_requirements.sh
 
-python3 detect_opencv.py --model models/mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite --labels models/coco_labels.txt 
+python3 detect_opencv.py --model models/ssd_mobilenet_v2_coco_quant_postprocess_edgetpu.tflite --labels models/coco_labels.txt 
 ```
 
 ## Classification
